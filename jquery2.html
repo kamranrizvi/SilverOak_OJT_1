@@ -1,0 +1,85 @@
+
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+        <script type=""text/javascript">
+            $ (document).ready(function(){
+                $("#BtnShow").attr("disabled",true);
+				
+				$("#BtnHide").click(function(){
+					if(confirm("Are you sure..??"))
+					{
+						$("#MyDiv").hide(5000);
+						$(this).attr("disabled",true);
+						$("#BtnShow").attr("disabled",false);
+						$("#BtnToggle").text("Show");
+					}
+				});
+				
+				$("#BtnShow").click(function(){
+					if(confirm("Are you sure..??"))
+					{
+						$("#MyDiv").show(5000);
+						$(this).attr("disabled",true);
+						$("#BtnHide").attr("disabled",false);
+						$("#BtnToggle").text("Hide");
+					}
+				});
+				
+				$("#BtnToggle").click(function(){
+					if(confirm("Are you sure..??"))
+					{
+						$("#MyDiv").toggle(5000);
+						($(this).text()=="Hide")
+							?($(this).text("Show"),$("#BtnHide").attr("disabled",true),$("#BtnShow").attr("disabled",false))
+							:($(this).text("Hide"),$("#BtnHide").attr("disabled",false),$("#BtnShow").attr("disabled",true))
+					}
+				});
+				
+				$("#BtnPlus").click(function(){
+					var MDH=parseInt($("#MyDiv").css("height"));
+					if(MDH<=400)
+					{
+						MDH+=10;
+						$("#MyDiv").css("height",MDH);
+						$("#MyDiv").css("width",MDH);
+					}
+					else{
+						alert("More than 400px is not possible.");
+					}
+				});
+				
+				$("#BtnMinus").click(function(){
+					var MDH=parseInt($("#MyDiv").css("height"));
+					if(MDH>=30)
+					{
+						MDH-=10;
+						$("#MyDiv").css("height",MDH);
+						$("#MyDiv").css("width",MDH);
+					}
+					else{
+						alert("Less than 30px is not possible.");
+					}
+				});
+			});
+
+        </script>
+        <body>
+            <div id="MyDiv" style="height:300px;width:300px;background-color:rgb(64, 64, 154)" ></div><br>
+                <button id="BtnHide">
+                    Hide
+                </button>&nbsp;&nbsp;
+                <button id="BtnShow">
+                    Show
+                </button>&nbsp;&nbsp;<br><hr/>
+                <button id="BtnToggle">
+                   Hide
+                </button>&nbsp;&nbsp;<br><hr/>
+                <button id="BtnPlus" style="font-size:small"> <b>+</b>
+                </button>
+                <button id="BtnMinus" style="font-size:small"> <b>-</b>
+                </button>
+           
+        </body>
+</html>
